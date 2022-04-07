@@ -27,7 +27,7 @@ int readWordLen()
 vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 {
     vector<string> answer;
-    //Write your code here
+    for(int i=0;i<vocabulary.size();i++) if(vocabulary[i].size()==wordLen) answer.push_back(vocabulary[i]);
     return answer;
 }
 
@@ -85,7 +85,21 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 char findBestChar(const vector<string>& candidateWords, const set<char>& selectedChars)
 {
     char answer;
-    //Write your code here
+    static bool check;
+    static int cnt[200];
+    if(check==false){
+        memset(cnt,0,sizeof(cnt));
+        for(int i=0;i<candidateWords.size();i++){
+          for(int j=0;j<candidateWords[i].size();j++) cnt[candidateWords[i][j]]++;
+        }
+        check=true;
+    }
+    int maxx=0;
+    for(int i='a';i<='z';i++){
+        if(selectedChars.find((char) i)==selectedChars.end()){
+            if(cnt[i]>maxx) {maxx=cnt[i]; answer=(char) i;}
+        }
+    }
     return answer;
 }
 
