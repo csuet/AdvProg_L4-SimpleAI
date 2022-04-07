@@ -24,3 +24,4 @@ You are required to implement several functions of HangMan game. They could be d
 * Step 6: Check the automated testing workflow on your modified code using Github Actions.
 
 Hope you enjoy the lesson.
+//test
