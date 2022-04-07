@@ -17,35 +17,76 @@ int readWordLen()
 
 }
 
+/***
+    Args:
+        wordLen (int): The desired length of input word
+        vocabulary (vector<string>): The vocabulary
+    Returns:
+        answer (vector<string>) : A set or word from the vocabulary where the number of character is equal to wordLen
+***/
 vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 {
-//Hàm trả về tập các từ có độ dài là wordLen
-}
-
-char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
-{
-//Hàm trả về kí tự khi từ đoán không có trong từ điển
-   return 0;
-}
-
-map<char, int> countOccurrences(const vector<string>& candidateWords)
-{
-// Hàm đếm số lần xuất hiện của các từ
-}
-
-char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& selectedChars)
-{
-// hàm tìm kí tự hay xuất hiện nhất
+    vector<string> answer;
+    //Write your code here
+    return answer;
 }
 
 /***
-Tìm kí tự xuất hiện nhiều nhất
-- Cài đặt cách 1: nếu xuất hiện nhiều lần trong 1 word thì cũng đếm nhiều lần
-- Cách 2 (ko cài ở đây): nếu xuất hiện nhiền lần trong 1 word thì chỉ đểm một lần
+    Args:
+        selectedChars (set<char>): The predicted characters
+    Returns:
+        answer (char) : The next character given the provided word is not in the vocabulary
 ***/
+
+char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
+{
+    char answer;
+    //Write your code here
+    return answer;
+}
+
+/***
+    Args:
+        candidateWords (vector<string>): The candidate words for the current given string
+    Returns:
+        answer (map) : The map which count the occurences of character in the set of candidate words
+***/
+
+map<char, int> countOccurrences(const vector<string>& candidateWords)
+{
+    map<char, int> answer;
+    //Write your code here
+    return answer;
+}
+
+/***
+    Args:
+        occurrences (map<char, int>): The map which count the occurences of character in the set of candidate words
+        selectedChars (set<char>): The predicted characters
+    Returns:
+        answer (char) : The most frequent character
+***/
+
+char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& selectedChars)
+{
+    char answer;
+    //Write your code here
+    return answer;
+}
+
+/***
+    Args:
+        candidateWords (vector<string>): The candidate words for the current given string
+        selectedChars (set<char>): The predicted characters
+    Returns:
+        answer (char) : The most suitable character for prediction
+***/
+
 char findBestChar(const vector<string>& candidateWords, const set<char>& selectedChars)
 {
-
+    char answer;
+    //Write your code here
+    return answer;
 }
 
 string getWordMask(char nextChar)
@@ -57,22 +98,70 @@ string getWordMask(char nextChar)
     return mask;
 }
 
+/***
+    Args:
+        ch (char): The predicted character by the AI
+        mask (string): The response mask by the player
+    Returns:
+        answer (bool) : return False if the predicted character is the wrong one, True otherwise
+***/
+
 bool isCorrectChar(char ch, const string& mask)
 {
-// Hàm kiểm tra kí tự đã đoán có đúng hay không
+    bool answer;
+    //Write your code here
+    return answer;
 }
 
+/***
+    Args:
+        mask (string): The response mask by the player
+    Returns:
+        answer (bool) : return False if the provided mask is not a whole word, True otherwise
+        (Example: -False: g__d
+                  -True:  good)
+***/
 bool isWholeWord(const string& mask)
 {
-// hàm kiểm tra xem đầu vào có phải là cả từ hay không
+     bool answer;
+    //Write your code here
+    return answer;
 }
 
+/***
+    This function should be used to support the filterWordsByMask function below
+    Args:
+        mask (string): The response mask by the player
+        word (string): input word
+        ch (char): The predicted character by the AI
+    Returns:
+        answer (bool) : return False if the provided mask and the given word is not in the same form.
+        Example: - False: mask(-ood), char 'd' vs word(boot)
+                 - True: mask(-ood), char 'd'  vs word(good)
+
+***/
 bool wordConformToMask(const string& word, const string& mask, char ch)
 {
-//Hàm kiếm tra xem từ và mask có cùng dạng hay không
+    bool answer;
+    //Write your code here
+    return answer;
 }
 
+/***
+    Args:
+        mask (string): The response mask by the player
+        words (vector<string>): The candidate words
+        ch (char): The predicted character by the AI
+    Returns:
+        answer (bool) : a list of word which satisfiy the mask and the predicted character
+        Examples: input words: (good,boot,hood,...)
+                  input mask: -ood
+                  predicted char: d
+                  Return: good,hood
+***/
 vector<string> filterWordsByMask(const vector<string>& words, const string& mask, char ch)
 {
-//Hàm lọc các từ dựa vào tập từ đầu vào, mask của nguời dùng và kí tự đang chọn
+    vector<string> answer;
+    //Write your code here
+    return answer;
 }
