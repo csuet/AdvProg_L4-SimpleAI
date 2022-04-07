@@ -1,5 +1,5 @@
 # Lesson 4 - SimpleAI:
-This is another lesson of the Advanced Programming course with the two following objectives:
+This is another lesson of the Advanced Programming course with the two following objectives: 
 
 * i) Understand about a simple AI source code structure
 * ii) Learn automated testing with Github Actions
@@ -21,7 +21,6 @@ You are required to implement several functions of HangMan game. They could be d
   - In the tab "Pull requests", click on "New pull request"
   - Set the pull request's title with the format as: [Your_student_ID]_[Your_full_name]
   - Click on "Create pull request" to submit
-* Step 6: Check the automated testing workflow on your modified code using Github Actions.
+* Step 6: Check the automated testing workflow on your modified code using Github Actions. 
 
-Hope you enjoy the lesson.
-//resolve conflict
+Hope you enjoy the lesson. 
