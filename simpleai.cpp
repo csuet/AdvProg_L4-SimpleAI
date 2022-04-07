@@ -110,6 +110,7 @@ bool isCorrectChar(char ch, const string& mask)
 {
     bool answer;
     //Write your code here
+    answer =(mask.find(ch) <mask.size() );
     return answer;
 }
 
