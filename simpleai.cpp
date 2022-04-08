@@ -78,21 +78,19 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 map<char, int> countOccurrences(const vector<string>& candidateWords)
 {
     map<char, int> answer;
-    //Write your code here
-    for(char c = 'a' ; c <= 'z'; c++)
-    {
-        int Count = 0;
-        for(int i = 0; i < candidateWords.size(); i++)
+    for (int i = 0; i < candidateWords.size(); i++) {
+        string str= candidateWords[i];
+        for (unsigned int j = 0; j < str.size(); j++)
+            answer[str[j]] = 0;
+    }
+    for (int i = 0; i < candidateWords.size(); i++) {
+        string str = candidateWords[i];
+        for ( int j = 0; j < str.size(); j++)
         {
-            for(int j = 0; j < candidateWords[i].size(); j ++)
-            {
-                if(candidateWords[i][j] == c)
-                {
-                    Count ++;
-                }
-            }
+            if (answer.find(str[j]) != answer.end())
+                answer[str[j]]++;
         }
-        answer[c] = Count;
+
     }
     return answer;
 }
@@ -110,14 +108,14 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
     char answer;
     //Write your code here
     int Max = 0;
-    for(char c : selectedChars)
-    {
-        if(Max < occurrences.at(c))
-        {
-            Max = occurrences.at(c);
-            answer = c;
-        }
-    }
+   for(auto c : occurrences)
+   {
+       if(c.second > Max && !selectedChars.count(c.first))
+       {
+           answer = c.first;
+           Max = c.second;
+       }
+   }
     return answer;
 }
 
@@ -260,26 +258,7 @@ vector<string> filterWordsByMask(const vector<string>& words, const string& mask
     //Write your code here
     for(int i = 0; i < words.size(); i++)
     {
-        int count = 0;
-        for(int j = 0; j < words[i].size(); j++)
-        {
-          if(words[i][j] == ch)
-          {
-              count ++;
-          }
-        }
-        if(count == 0)
-        {
-            continue;
-        }
-        for(int j = 0; j < mask.size();j ++)
-        {
-            if(mask[j] == ch && words[i][j] == ch)
-            {
-                count --;
-            }
-        }
-        if(count == 0)
+        if(wordConformToMask(words[i], mask, ch))
         {
             answer.push_back(words[i]);
         }
