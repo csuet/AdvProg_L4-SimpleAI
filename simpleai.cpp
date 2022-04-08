@@ -190,7 +190,7 @@ bool isWholeWord(const string& mask)
     int Count = 0;
     for(int i = 0; i < mask.size(); i++)
     {
-        if(mask[i] == '_')
+        if(mask[i] == '-')
         {
             Count ++;
         }
