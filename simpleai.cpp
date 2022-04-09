@@ -130,10 +130,10 @@ string getWordMask(char nextChar)
 
 bool isCorrectChar(char ch, const string& mask)
 {
-    bool answer = true;
+    bool answer = false;
     //Write your code here
     for(unsigned i = 0; i < mask.size(); i++){
-        if(mask[i] == ch) answer = false;
+        if(mask[i] == ch) answer = true;
     }
     return answer;
 }
