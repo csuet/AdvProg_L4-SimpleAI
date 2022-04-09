@@ -20,7 +20,9 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
 string getWordMask(char nextChar);
 bool isCorrectChar(char ch, const string& mask);
 bool isWholeWord(const string& mask);
+char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars);
 vector<string> filterWordsByMask(const vector<string>& words, const string& mask, char ch);
+bool wordConformToMask(const string& word, const string& mask, char ch);
 
 const char MASK_CHAR = '-';
 #endif
