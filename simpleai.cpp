@@ -79,24 +79,13 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 {
     char answer;
     //Write your code here
-    int arr1[256];
-    int arr2[256];
-    int index = 0;
-    for (auto i : occurrences) {
-        arr1[index] = i.first; arr2[index] = i.second;
-        index++;
-    }
-    for(int i = 0; i < occurrences.size(); i++)
-        for(int j = i + 1; j < occurrences.size(); j++)
-            if (arr2[j] > arr2[i]) {
-                swap(arr2[i], arr2[j]);
-                swap(arr1[i], arr1[j]);
-            }
-    int cnt = 0;
-    for(int i = 0; i < 256; i++)
-        if (selectedChars.find((char)arr1[i]) == selectedChars.end()) {
-            answer = (char)arr1[i]; break;
+    int maxFre = -1;
+    for (auto i : occurrences)
+    {
+        if (i.second > maxFre && selectedChars.find(i.first) == selectedChars.end()) {
+            maxFre = i.second; answer = i.first;
         }
+    }
     return answer;
 }
 
@@ -112,30 +101,8 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
 {
     char answer;
     //Write your code here
-    int arr1[256];
-    int arr2[256];
-    int index = 0;
-    map<char, int> occurrences;
-    for (int i = 0; i < candidateWords.size(); i++)
-        for (int j = 0; j < candidateWords[i].length(); j++)
-            occurrences[candidateWords[i][j]]++;
-
-    for (auto i : occurrences) {
-        arr1[index] = i.first; arr2[index] = i.second;
-        index++;
-    }
-
-    for (int i = 0; i < occurrences.size(); i++)
-        for (int j = i + 1; j < occurrences.size(); j++)
-            if (arr2[j] > arr2[i]) {
-                swap(arr2[i], arr2[j]);
-                swap(arr1[i], arr1[j]);
-            }
-    int cnt = 0;
-    for (int i = 0; i < 256; i++)
-        if (selectedChars.find((char)arr1[i]) == selectedChars.end()) {
-            answer = (char)arr1[i]; break;
-        }
+    map<char, int> occurrences = countOccurrences(candidateWords);
+    answer = findMostFrequentChar(selectedChars);
     return answer;
 }
 
@@ -221,12 +188,7 @@ vector<string> filterWordsByMask(const vector<string>& words, const string& mask
 {
     vector<string> answer;
     for (int i = 0; i < words.size(); i++)
-    {
-        bool isTrue = true;
-        for (int j = 0; j < words[i].size(); i++)
-            if (mask[j] != '-' && words[i][j] != mask[j]) isTrue = false;
-        if (isTrue = true) answer.push_back(words[i]);
-    }
+        if (wordConformToMask(words[i], mask, ch) answer.push_back(words[i]);
     //Write your code here
     return answer;
 }
