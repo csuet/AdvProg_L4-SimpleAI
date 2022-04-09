@@ -6,7 +6,6 @@
 #include <map>
 #include <set>
 #include <fstream>
-#include <algorithm>
  
 #include "util.h"
 
@@ -15,6 +14,8 @@ using namespace std;
 int readMaxGuess();
 int readWordLen();
 vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary);
+map<char, int> countOccurrences(const vector<string>& candidateWords);
+char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& selectedChars)
 char findBestChar(const vector<string>& candidateWords, const set<char>& selectedChars);
 string getWordMask(char nextChar);
 bool isCorrectChar(char ch, const string& mask);
