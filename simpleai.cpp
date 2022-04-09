@@ -187,8 +187,9 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
 vector<string> filterWordsByMask(const vector<string>& words, const string& mask, char ch)
 {
     vector<string> answer;
+
     for (int i = 0; i < words.size(); i++)
-        if (wordConformToMask(words[i], mask, ch) answer.push_back(words[i]);
+        if (wordConformToMask(words[i], mask, ch)) answer.push_back(words[i]);
     //Write your code here
     return answer;
 }
