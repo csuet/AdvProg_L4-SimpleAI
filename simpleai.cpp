@@ -93,9 +93,9 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
                 swap(arr1[i], arr1[j]);
             }
     int cnt = 0;
-    for(int i = 0; i < cnt; i++)
-        if (selectedChars.find(arr1[i]) == -1) {
-            answer = arr1[i]; break;
+    for(int i = 0; i < 256; i++)
+        if (selectedChars.find((char)arr1[i]) == -1) {
+            answer = (char)arr1[i]; break;
         }
     return answer;
 }
