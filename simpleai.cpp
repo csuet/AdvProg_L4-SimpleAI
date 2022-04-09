@@ -86,15 +86,15 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
         arr1[index] = i.first; arr2[index] = i.second;
         index++;
     }
-    for(int i = 0; i < occurrences.size; i++)
-        for(int j = i + 1; j < occurrences.size; j++)
+    for(int i = 0; i < occurrences.size(); i++)
+        for(int j = i + 1; j < occurrences.size(); j++)
             if (arr2[j] > arr2[i]) {
                 swap(arr2[i], arr2[j]);
                 swap(arr1[i], arr1[j]);
             }
     int cnt = 0;
     for(int i = 0; i < cnt; i++)
-        if (selectedChars.find(arr1[i]) = -1) {
+        if (selectedChars.find(arr1[i]) == -1) {
             answer = arr1[i]; break;
         }
     return answer;
