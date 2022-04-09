@@ -127,6 +127,7 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
     for (int i = 0; i < 256; i++)
         if (selectedChars.find((char)arr1[i]) == selectedChars.end()) {
             answer = (char)arr1[i]; break;
+        }
     return answer;
 }
 
