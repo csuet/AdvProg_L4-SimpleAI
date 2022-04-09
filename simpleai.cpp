@@ -82,7 +82,7 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
     answer =nextCharWhenWordIsNotInDictionary(selectedChars);
     int best_count = 0;
     for (auto p : occurrences)
-      //if (selectedChars.find(p.first) !=selectedChars.end() )
+      if (selectedChars.find(p.first) ==selectedChars.end() )
         if (p.second > best_count) {
             answer = p.first;
             best_count = p.second;
