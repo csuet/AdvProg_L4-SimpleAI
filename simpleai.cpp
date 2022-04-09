@@ -28,6 +28,8 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 {
     vector<string> answer;
     //Write your code here
+    for(string x : vocabulary)
+        if(x.length()==wordLen) answer.push_back(x);
     return answer;
 }
 
@@ -41,7 +43,14 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 {
     char answer;
-    //Write your code here
+    for (char r = 'a'; r <= 'z'; r++)
+    {
+        if (!selectedChars.count(r))
+        {
+            answer = r;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -55,7 +64,20 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 map<char, int> countOccurrences(const vector<string>& candidateWords)
 {
     map<char, int> answer;
-    //Write your code here
+    for (unsigned int i = 0; i < candidateWords.size(); i++) {
+        string s = candidateWords[i];
+        for (unsigned int j = 0; j < s.length(); j++)
+            answer[s[j]] = 0;
+    }
+    for (unsigned int i = 0; i < candidateWords.size(); i++) {
+        string s = candidateWords[i];
+        for (unsigned int j = 0; j < s.length(); j++)
+        {
+            if (answer.find(s[j]) != answer.end())
+                answer[s[j]]++;
+        }
+
+    }
     return answer;
 }
 
