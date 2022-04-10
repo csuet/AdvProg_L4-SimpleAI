@@ -184,8 +184,8 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
     if(!isCorrectChar(ch, mask)){
         return false;
     }
-    for(int i =0; i<mark.size(); i++){
-        if(mark[i]!='-'&&mark[i]!=word[i]){
+    for(int i =0; i<mask.size(); i++){
+        if(mask[i]!='-'&&mask[i]!=word[i]){
             return false;
         }
     }
@@ -208,8 +208,8 @@ vector<string> filterWordsByMask(const vector<string>& words, const string& mask
 {
     vector<string> answer;
     //Write your code here
-    for(string s : word){
-        if(wordConformToMask(s, mark, ch)){
+    for(string s : words){
+        if(wordConformToMask(s, mask, ch)){
             answer.push_back(s);
         }
     }
