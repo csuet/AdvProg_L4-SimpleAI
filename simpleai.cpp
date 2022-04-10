@@ -47,8 +47,9 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 {
     char answer;
     for(char i = 'a'; i <= 'z' ;i++){
-        if(selectedChars.count(i) == 0){
+        if(selectedChars.find(i) == selectedChars.end()){
             answer = i;
+            break;
         }
     }
     //Write your code here
@@ -87,7 +88,7 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
     char answer;
     int x = -1;
     for(auto i : occurrences){
-        if(i.second > x && selectedChars.count(i.first) == 0){
+        if(i.second > x && selectedChars.find(i.first) == selectedChars.end()){
             answer = i.first;
             x = i.second;
         }
@@ -152,7 +153,7 @@ bool isWholeWord(const string& mask)
 {
      bool answer = true;
      for(int i = 0; i< mask.size(); i++){
-         if(mask[i] == MASK_CHAR) answer = false;
+         if(mask[i] == '-') answer = false;
      }
     //Write your code here
     return answer;
@@ -172,11 +173,9 @@ bool isWholeWord(const string& mask)
 ***/
 bool wordConformToMask(const string& word, const string& mask, char ch) 
 {
-    bool answer = true;
-    for(int i = 0; i< word.size(); i++){
-        if(mask[i]!=MASK_CHAR){
-            if(mask[i]!=word[i]) answer = false;
-        }
+    bool answer = false;
+    for(int i = 0; i< word.length(); i++){
+            if(word[i]==ch && mask[i] == ch) answer = true;
     }
     //Write your code here
     return answer;
