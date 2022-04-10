@@ -104,9 +104,9 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
     //Write your code here
     for (auto x: countOccurrences(candidateWords))
     {
-        for (auto y: selectedChars)
+        for (char y: selectedChars)
         {
-            if (x.first != y)
+            if (x.first != y && x.second > answer)
             {
                 answer = x.first;
                 break;
