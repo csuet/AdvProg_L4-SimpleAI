@@ -44,7 +44,7 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
     char answer;
     //Write your code here
 	for(int i = 'a'; i<='z'; i++) if(selectedChars.find(i) == selectedChars.end()) return i;
-    return answer;
+    //return answer;
 }
 
 /***
@@ -59,7 +59,7 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
     map<char, int> answer;
     //Write your code here
 	for(int i = 0; i<candidateWords.size(); i++){
-		answer[candidateWords[i]]++;
+        for(int j = 0; j<candidateWords[i].size(); j++) answer[candidateWords[i][j]]++;
 	}
     return answer;
 }
