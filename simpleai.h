@@ -6,6 +6,7 @@
 #include <map>
 #include <set>
 #include <fstream>
+#include <cctype>
  
 #include "util.h"
 

@@ -165,7 +165,7 @@ bool isWholeWord(const string &mask)
     // Write your code here
     for (int i = 0; i < mask.size(); i++)
     {
-        if (mask[i] == '_')
+        if (!(isalpha(mask[i])))
         {
             answer = false;
             break;
