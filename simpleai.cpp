@@ -161,12 +161,15 @@ bool isCorrectChar(char ch, const string &mask)
 ***/
 bool isWholeWord(const string &mask)
 {
-    bool answer;
+    bool answer = true;
     // Write your code here
     for (int i = 0; i < mask.size(); i++)
     {
-        if (mask[i] == '-')
-            return false;
+        if (mask[i] == '_')
+        {
+            answer = false;
+            break;
+        }
     }
     return answer;
 }
@@ -188,7 +191,7 @@ bool wordConformToMask(const string &word, const string &mask, char ch)
     bool answer;
     // Write your code here
     int ch1 = 0, ch2 = 0;
-    for (int i = 0; i < mask.size(); i++)
+    for (int i = 0; i < word.size(); i++)
     {
         if (mask[i] == ch)
         {
