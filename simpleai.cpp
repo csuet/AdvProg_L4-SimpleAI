@@ -49,16 +49,14 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 {
     char answer;
     //Write your code here
-    set<char> tmp;
     for (char c = 'a'; c < 'z'; c++)
     {
-        tmp.insert(c);
+        if (!selectedChars.count(c))
+        {
+            answer = c;
+            break;
+        }
     }
-    for (auto c : selectedChars)
-    {
-        tmp.erase(c);
-    }
-    answer = *(tmp.begin());
     return answer;
 }
 
