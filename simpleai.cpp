@@ -43,8 +43,8 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 {
     char answer;
     //Write your code here
-	for(int i = 'a'; i<='z'; i++) if(selectedChars.find(i) == selectedChars.end()) return i;
-    //return answer;
+	for(char i = 'a'; i<='z'; i++) if(selectedChars.find(i) == selectedChars.end()) return i;
+    return answer;
 }
 
 /***
@@ -58,8 +58,8 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 {
     map<char, int> answer;
     //Write your code here
-	for(int i = 0; i<candidateWords.size(); i++){
-        for(int j = 0; j<candidateWords[i].size(); j++) answer[candidateWords[i][j]]++;
+	for(auto candidateWord : candidateWords){
+		for(auto c: candidateWord) answer[c]++;
 	}
     return answer;
 }
@@ -74,12 +74,12 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 
 char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& selectedChars)
 {
-    char answer;
+    pair<char, int> answer = {'', -1};
     //Write your code here
-	for(auto c: selectedChars){
-		if(occurrences[c] > occurrences[answer]) answer = c;
+	for( auto i: occurrences){
+		if(i.second > answer.second && selectedChars,find(i.first) == selectedChars.end()) answer = i;
 	}
-    return answer;
+    return answer.first;
 }
 
 /***
@@ -120,7 +120,7 @@ bool isCorrectChar(char ch, const string& mask)
 {
     //bool answer;
     //Write your code here
-	for(int i = 0; i<mask.size(); i++) if(ch == mask) return true;
+	for(int i = 0; i<mask.size(); i++) if(ch == mask[i]) return true;
     return false;
 }
 
