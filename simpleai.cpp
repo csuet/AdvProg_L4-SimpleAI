@@ -85,14 +85,11 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 {
     char answer;
     //Write your code here
-    multimap<int, char> m;
-    for(auto &i:occurrences) {
-        m.insert({i.second, i.first});
-    }
-    for(auto &i:occurrences) {
-        if(i.second==m.rbegin()->first && selectedChars.count(i.first)==0) {
+    int most=0;
+    for(auto i:count) {
+        if(i.second()>most) {
             answer=i.first;
-            break;
+            most=i.second;
         }
     }
     return answer;
@@ -177,7 +174,10 @@ bool isWholeWord(const string& mask)
 bool wordConformToMask(const string& word, const string& mask, char ch) 
 {
     //Write your code here
-    
+    if(word.length()!=mask.length()) return false;
+    for(int i=0;i<word.length();i++) {
+        if(mask[i]!='-' && mask[i]!=word[i]) return false;
+    }
     return true;
 }
 
@@ -197,5 +197,8 @@ vector<string> filterWordsByMask(const vector<string>& words, const string& mask
 {
     vector<string> answer;
     //Write your code here
+    for(int i=0;i<word.size();i++) {
+        if(wordConformToMask(word[i], mask, ch)) answer.push_back(word[i]);
+    }
     return answer;
 }
