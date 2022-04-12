@@ -45,7 +45,12 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 {
     char answer;
     //Write your code here
-    
+    for(char i='a';i<='z';i++) {
+        if(selectedChars.count(i)==0) {
+            answer=i;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -60,6 +65,11 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 {
     map<char, int> answer;
     //Write your code here
+    for(int i=0;i<candidateWords.size();i++) {
+        for(int j=0;j<candidateWords[i].size();j++) {
+            answer[candidateWords[i][j]]++;
+        }
+    }
     return answer;
 }
 
@@ -75,6 +85,16 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 {
     char answer;
     //Write your code here
+    multimap<int, char> m;
+    for(auto &i:occurrences) {
+        m.insert({i.second, i.first});
+    }
+    for(auto &i:occurrences) {
+        if(i.second==m.rbegin()->first && selectedChars.count(i.first)==0) {
+            answer=i.first;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -90,6 +110,8 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
 {
     char answer;
     //Write your code here
+    map<char, int> occured=countOccurrences(candidateWords);
+    answer=findMostFrequentChar(occured, selectedChars);
     return answer;
 }
 
@@ -112,9 +134,13 @@ string getWordMask(char nextChar)
 
 bool isCorrectChar(char ch, const string& mask)
 {
-    bool answer;
     //Write your code here
-    return answer;
+    for(const auto &i:mask) {
+        if(i==ch) {
+            return true;
+        }
+    }
+    return false;;
 }
 
 /***
@@ -127,9 +153,13 @@ bool isCorrectChar(char ch, const string& mask)
 ***/
 bool isWholeWord(const string& mask)
 {
-     bool answer;
     //Write your code here
-    return answer;
+    for(const auto &i:mask) {
+        if(i=='_') {
+            return false;
+        }
+    }
+    return true;;
 }
 
 /***
@@ -146,9 +176,9 @@ bool isWholeWord(const string& mask)
 ***/
 bool wordConformToMask(const string& word, const string& mask, char ch) 
 {
-    bool answer;
     //Write your code here
-    return answer;
+    
+    return true;
 }
 
 /***
