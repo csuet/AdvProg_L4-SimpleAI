@@ -8,14 +8,14 @@ You are required to implement several functions of HangMan game. They could be d
 * Step 1: Fork this repo to your own account
 * Step 2: Clone the forked repo to your local via the command: git clone https://github.com/[YOUR_USERNAME]/AdvProg_L4-SimpleAI.git
 * Step 3: Modify the following functions of the 'simpleai.cpp' file to complete the requirement.:
-	* int generateRandomNumber(const int min, const int max);
-	* bool isCharInWord(const char ch, const string& word);
-	* vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary);
+	<* int generateRandomNumber(const int min, const int max);
+	<* bool isCharInWord(const char ch, const string& word);
+	<* vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary);
 	* char findBestChar(const vector<string>& candidateWords, const set<char>& selectedChars);
-	* string getWordMask(char nextChar);
-	* bool isCorrectChar(char ch, const string& mask);
-	* bool isWholeWord(const string& mask);
-	*  vector<string> filterWordsByMask(const vector<string>& words, const string& mask, char ch);
+	<* string getWordMask(char nextChar);
+	<* bool isCorrectChar(char ch, const string& mask);
+	<* bool isWholeWord(const string& mask);
+	<*  vector<string> filterWordsByMask(const vector<string>& words, const string& mask, char ch);
 * Step 4: Commit & push the modified file using the command: *git commit -m "[Insert_your_own_message]" & git push origin main*
 * Step 5: Create a pull request:
   - In the tab "Pull requests", click on "New pull request"
