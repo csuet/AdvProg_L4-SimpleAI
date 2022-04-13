@@ -133,9 +133,9 @@ bool isCorrectChar(char ch, const string& mask)
 {
     bool answer = false;
     //Write your code here
-    for(int i=0;i<mask.length();i++)
+    for(int i=0;i<mask.length();i++){
     if(ch==mask[i])return true;
-    
+    }
     return answer;
 }
 
@@ -199,5 +199,8 @@ vector<string> filterWordsByMask(const vector<string>& words, const string& mask
 {
     vector<string> answer;
     //Write your code here
+    for(const string& w: words)
+       if	(wordConformToMask(w, mask, ch) )
+          answer.push_back(w);
     return answer;
 }
