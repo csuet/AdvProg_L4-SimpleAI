@@ -46,7 +46,7 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
     char answer;
     //Write your code here
     for(char i = 'a'; i <= 'z'; i++)
-        if (selectedChars[i] == 0)
+        if (selectedChars.count(i) == 0)
             answer = i;
     
     return answer;
@@ -195,9 +195,9 @@ vector<string> filterWordsByMask(const vector<string>& words, const string& mask
 {
     vector<string> answer;
     //Write your code here
-    for(int i = 0; i < words.length(); i++){
+    for(int i = 0; i < words.size(); i++){
         if (wordConformToMask(words[i] , mask, ch))
-            answer.push_back(word[i]);
+            answer.push_back(words[i]);
     }
     return answer;
 }
