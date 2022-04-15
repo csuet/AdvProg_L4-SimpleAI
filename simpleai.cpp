@@ -50,8 +50,8 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
     answer = 'a';
     while (answer <= 'z') {
         bool isExist = false;
-        for (int i = 0; i < selectedChars.size(); i++) {
-            if (answer == selectedChars[i]) {
+        for (char ch : selectedChars) {
+            if (ch == answer) {
                 isExist = true;
                 break;
             }
