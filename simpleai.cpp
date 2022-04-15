@@ -27,7 +27,9 @@ int readWordLen()
 vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 {
     vector<string> answer;
-    //Write your code here
+    for(string c : vocabulary)
+      if(c.length()==wordLen)
+        answer.push_back(c);
     return answer;
 }
 
@@ -41,7 +43,7 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 {
     char answer;
-    //Write your code here
+    
     return answer;
 }
 
