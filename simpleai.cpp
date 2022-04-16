@@ -14,7 +14,7 @@ int readWordLen()
     cout << endl << "Enter the number characters of your secret word: ";
     cin >> wordLen;
     return wordLen;
-    
+
 }
 
 /***
@@ -28,6 +28,9 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 {
     vector<string> answer;
     //Write your code here
+    for(string s : vocabulary) {
+        if(s.length() == wordLen) answer.push_back(s);
+    }
     return answer;
 }
 
@@ -42,12 +45,18 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 {
     char answer;
     //Write your code here
+    for(char c = 'a'; c <= 'z'; c++) {
+        if(selectedChars.find(c) != selectedChars.end()) {
+            answer = c;
+            break;
+        }
+    }
     return answer;
 }
 
 /***
     Args:
-        candidateWords (vector<string>): The candidate words for the current given string 
+        candidateWords (vector<string>): The candidate words for the current given string
     Returns:
         answer (map) : The map which count the occurences of character in the set of candidate words
 ***/
@@ -56,6 +65,9 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 {
     map<char, int> answer;
     //Write your code here
+    for(string s : candidateWords) {
+        for(char c : s) answer[c]++;
+    }
     return answer;
 }
 
@@ -71,12 +83,19 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 {
     char answer;
     //Write your code here
+    int MIN = 0;
+    for(auto it : occurrences) {
+        if(it.second > MIN && selectedChars.find(it.first) != selectedChars.end()) {
+            answer = it.first;
+            MIN = it.second;
+        }
+    }
     return answer;
 }
 
 /***
     Args:
-        candidateWords (vector<string>): The candidate words for the current given string 
+        candidateWords (vector<string>): The candidate words for the current given string
         selectedChars (set<char>): The predicted characters
     Returns:
         answer (char) : The most suitable character for prediction
@@ -86,6 +105,8 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
 {
     char answer;
     //Write your code here
+    map<char, int> countOccur = countOccurrences(candidateWords);
+    answer = findMostFrequentChar(countOccur, selectedChars);
     return answer;
 }
 
@@ -108,8 +129,14 @@ string getWordMask(char nextChar)
 
 bool isCorrectChar(char ch, const string& mask)
 {
-    bool answer;
+    bool answer = false;
     //Write your code here
+    for(char c : mask) {
+        if(c == ch) {
+            answer = true;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -123,8 +150,15 @@ bool isCorrectChar(char ch, const string& mask)
 ***/
 bool isWholeWord(const string& mask)
 {
-     bool answer;
+     bool answer = true;
     //Write your code here
+    for(char c : mask) {
+        if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) continue;
+        else {
+            answer = false;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -140,10 +174,22 @@ bool isWholeWord(const string& mask)
                  - True: mask(-ood), char 'd'  vs word(good)
 
 ***/
-bool wordConformToMask(const string& word, const string& mask, char ch) 
+bool wordConformToMask(const string& word, const string& mask, char ch)
 {
-    bool answer;
+    bool answer = true;
     //Write your code here
+    for(int i = 0; i < word.length(); i++) {
+        if(mask[i] != '-') {
+            if(mask[i] != ch) {
+                answer = false;
+                break;
+            }
+            if(word[i] != '-' && word[i] != mask[i]) {
+                answer = false;
+                break;
+            }
+        }
+    }
     return answer;
 }
 
@@ -163,5 +209,17 @@ vector<string> filterWordsByMask(const vector<string>& words, const string& mask
 {
     vector<string> answer;
     //Write your code here
+    for(string s : words) {
+        if(s.length() == mask.length() && s.find(ch) != -1) {
+            bool ok = true;
+            for(int i = 0; i < s.length(); i++) {
+                if(mask[i] != '-' && mask[i] != s[i]) {
+                    ok = false;
+                    break;
+                }
+            }
+            if(ok) answer.push_back(s);
+        }
+    }
     return answer;
 }
