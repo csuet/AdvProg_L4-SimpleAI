@@ -28,6 +28,11 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 {
     vector<string> answer;
     //Write your code here
+    for(string c:vocabulary){
+        if(c.size()==wordLen){
+            answer.push_back(c);
+        }
+    }
     return answer;
 }
 
@@ -42,6 +47,19 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 {
     char answer;
     //Write your code here
+    answer='a';
+    while(answer<'z'){
+        bool isExist=false;
+        for(char c:selectedChars){
+            if(c==answer){
+                isExist=true;
+                break;
+            }
+            if(!isExist) return answer;
+            else answer++;
+        }
+
+    }
     return answer;
 }
 
@@ -56,6 +74,14 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 {
     map<char, int> answer;
     //Write your code here
+     for(string word: candidateWords)
+    {
+        int wordLength = word.size();
+        for(int i = 0; i < wordLength; ++i)
+        {
+            answer[word[i]]++;
+        }
+    }
     return answer;
 }
 
@@ -71,6 +97,16 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 {
     char answer;
     //Write your code here
+     int frequent = 0;
+
+    for(auto c: occurrences)
+    {
+        if(c.first > frequent)
+        {
+            frequent = c.second;
+            answer = c.first;
+        }
+    }
     return answer;
 }
 
@@ -86,6 +122,12 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
 {
     char answer;
     //Write your code here
+    map <char, int> countOccur = countOccurrences(candidateWords);
+    for(auto c: selectedChars)
+    {
+        countOccur[c] = 0;
+    }
+    answer = findMostFrequentChar(countOccur, selectedChars);
     return answer;
 }
 
@@ -106,10 +148,16 @@ string getWordMask(char nextChar)
         answer (bool) : return False if the predicted character is the wrong one, True otherwise
 ***/
 
-bool isCorrectChar(char ch, const string& mask)
+bool isCorrectChar(char c, const string& mask)
 {
     bool answer;
     //Write your code here
+     answer = false;
+    int sz = mask.size();
+    for(int i = 0; i < sz; ++i)
+    {
+        if(mask[i] == c) answer = true;
+    }
     return answer;
 }
 
@@ -125,6 +173,12 @@ bool isWholeWord(const string& mask)
 {
      bool answer;
     //Write your code here
+     int sz = mask.size();
+     answer = true;
+     for(int i = 0; i < sz; ++i)
+     {
+         if(mask[i] == '_') answer = false;
+     }
     return answer;
 }
 
@@ -140,10 +194,17 @@ bool isWholeWord(const string& mask)
                  - True: mask(-ood), char 'd'  vs word(good)
 
 ***/
-bool wordConformToMask(const string& word, const string& mask, char ch) 
+bool wordConformToMask(const string& word, const string& mask, char c) 
 {
     bool answer;
     //Write your code here
+     answer = true;
+    int sz = mask.size();
+
+    for(int i = 0; i < sz; ++i)
+    {
+        if(mask[i] == c && word[i] != c) answer = false;
+    }
     return answer;
 }
 
@@ -159,9 +220,13 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
                   predicted char: d
                   Return: good,hood
 ***/
-vector<string> filterWordsByMask(const vector<string>& words, const string& mask, char ch)
+vector<string> filterWordsByMask(const vector<string>& words, const string& mask, char c)
 {
     vector<string> answer;
+     for(auto &word: words)
+    {
+        if(wordConformToMask(word, mask, c) == true) answer.push_back(word);
+    }
     //Write your code here
     return answer;
 }
