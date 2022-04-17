@@ -38,9 +38,9 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 
 /***
     Args:
-        selectedChars (set<char>): The predicted characters( Ky tu doan)
+        selectedChars (set<char>): The predicted characters
     Returns:
-        answer (char) : The next character given the provided word is not in the vocabulary(Ký tự tiếp theo cho từ đã cho không có trong từ vựng)
+        answer (char) : The next character given the provided word is not in the vocabulary
 ***/
 
 char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
