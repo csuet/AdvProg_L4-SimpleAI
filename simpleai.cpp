@@ -28,6 +28,10 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 {
     vector<string> answer;
     //Write your code here
+    for(int i=0;i<vocabulary.size();i++){
+        if(vocabulary[i].length()==wordLen)
+            answer.push_back(vocabulary[i]);
+    }
     return answer;
 }
 
@@ -56,6 +60,11 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 {
     map<char, int> answer;
     //Write your code here
+    for(int i=0;i<candidateWords.size();i++){
+        for(int j=0;j<candidateWords[i].length();j++){
+            answer[candidateWords[i][j]]++;
+        }
+    }
     return answer;
 }
 
@@ -108,9 +117,12 @@ string getWordMask(char nextChar)
 
 bool isCorrectChar(char ch, const string& mask)
 {
-    bool answer;
+    for(int i=0;i<mask.size();i++){
+        if(ch==mask[i])
+            return true;
+    }
     //Write your code here
-    return answer;
+    return false;
 }
 
 /***
@@ -123,9 +135,13 @@ bool isCorrectChar(char ch, const string& mask)
 ***/
 bool isWholeWord(const string& mask)
 {
-     bool answer;
+     
     //Write your code here
-    return answer;
+    for(int i=0;i<mask.size();i++){
+        if('_'== mask[i])
+            return false
+    }
+    return true;
 }
 
 /***
