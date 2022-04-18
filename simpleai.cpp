@@ -54,7 +54,7 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
     }
     //Write your code here
     
-    return answer;
+    return answer
 }
 
 /***
