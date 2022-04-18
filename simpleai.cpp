@@ -28,6 +28,10 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 {
     vector<string> answer;
     //Write your code here
+    for (const string str:vocabulary) {
+        if (str.size() == wordLen)
+            answer.push_back(str);
+    }
     return answer;
 }
 
@@ -86,6 +90,12 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
 {
     char answer;
     //Write your code here
+    for (const char c:candidateWords[0]) {
+        if (selectedChars.find(c) == selectedChars.end()) {
+            answer = c;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -108,8 +118,14 @@ string getWordMask(char nextChar)
 
 bool isCorrectChar(char ch, const string& mask)
 {
-    bool answer;
+    bool answer = 0;
     //Write your code here
+    for (const char c:mask) {
+        if (c == ch) {
+            answer = 1;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -123,8 +139,14 @@ bool isCorrectChar(char ch, const string& mask)
 ***/
 bool isWholeWord(const string& mask)
 {
-     bool answer;
+    bool answer = 1;
     //Write your code here
+    for (const char c:mask) {
+        if (c == '-') {
+            answer = 0;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -142,8 +164,18 @@ bool isWholeWord(const string& mask)
 ***/
 bool wordConformToMask(const string& word, const string& mask, char ch) 
 {
-    bool answer;
+    bool answer = 1;
     //Write your code here
+    if (mask.size() != word.size()) {
+        answer = 0;
+    } else {
+        for (int i = 0; i < mask.size(); i++) {
+            if (mask[i] != '-' && mask[i] != word[i]) {
+                answer = 0;
+                break;
+            }
+        }
+    }
     return answer;
 }
 
@@ -162,6 +194,18 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
 vector<string> filterWordsByMask(const vector<string>& words, const string& mask, char ch)
 {
     vector<string> answer;
-    //Write your code here
+    for (const string str:words) {
+        bool flag = 1;
+        for (int i = 0; i < mask.size(); i++) {
+            if (mask[i] == '-' && str[i] == ch) {
+                flag = 0;
+                break;
+            } else if (mask[i] != '-' && str[i] != mask[i]) {
+                flag = 0;
+                break;
+            }
+        }
+        if (flag) answer.push_back(str);
+    }
     return answer;
 }
