@@ -48,7 +48,7 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
     char answer;
     //Write your code here
       for(char c='a'; c<='z'; c++) {
-        if(selectedChars.find(c) = selectedChars.end()) {
+        if(selectedChars.find(c) == selectedChars.end()) {
             answer = c;
             break;
         }
