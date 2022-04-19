@@ -137,9 +137,9 @@ bool isCorrectChar(char ch, const string& mask)
     bool answer;
     answer = false;
     for (int i = 0; i < mask.length(); i++) {
-        if (ch == mask[i]) return true;
+        if (ch == mask[i]) return answer;
     }
-    return false;
+    return answer;
 }
 
 /***
@@ -153,10 +153,12 @@ bool isCorrectChar(char ch, const string& mask)
 bool isWholeWord(const string& mask)
 {
     bool answer;
+    answer = false;
     for (int i = 0; i < mask.length(); i++) {
-        if (mask[i] == '-') return false;
+        if (mask[i] == '-') return answer;
     }
-    return true;
+    answer = true;
+    return answer;
 }
 
 /***
