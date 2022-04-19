@@ -1,94 +1,3 @@
-#include "simpleai.h"
-
-int readMaxGuess()
-{
-    int maxGuess;
-    cout << endl << "Enter the number of incorrect guesses: ";
-    cin >> maxGuess;
-    return maxGuess;
-}
-
-int readWordLen()
-{
-    int wordLen;
-    cout << endl << "Enter the number characters of your secret word: ";
-    cin >> wordLen;
-    return wordLen;
-    
-}
-
-/***
-    Args:
-        wordLen (int): The desired length of input word
-        vocabulary (vector<string>): The vocabulary
-    Returns:
-        answer (vector<string>) : A set or word from the vocabulary where the number of character is equal to wordLen
-***/
-vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
-{
-    vector<string> answer;
-    //Write your code here
-    return answer;
-}
-
-/***
-    Args:
-        selectedChars (set<char>): The predicted characters
-    Returns:
-        answer (char) : The next character given the provided word is not in the vocabulary
-***/
-
-char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
-{
-    char answer;
-    //Write your code here
-    return answer;
-}
-
-/***
-    Args:
-        candidateWords (vector<string>): The candidate words for the current given string 
-    Returns:
-        answer (map) : The map which count the occurences of character in the set of candidate words
-***/
-
-map<char, int> countOccurrences(const vector<string>& candidateWords)
-{
-    map<char, int> answer;
-    //Write your code here
-    return answer;
-}
-
-/***
-    Args:
-        occurrences (map<char, int>): The map which count the occurences of character in the set of candidate words
-        selectedChars (set<char>): The predicted characters
-    Returns:
-        answer (char) : The most frequent character
-***/
-
-char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& selectedChars)
-{
-    char answer;
-    //Write your code here
-    return answer;
-}
-
-/***
-    Args:
-        candidateWords (vector<string>): The candidate words for the current given string 
-        selectedChars (set<char>): The predicted characters
-    Returns:
-        answer (char) : The most suitable character for prediction
-***/
-
-char findBestChar(const vector<string>& candidateWords, const set<char>& selectedChars)
-{
-    char answer;
-    //Write your code here
-    return answer;
-}
-
 string getWordMask(char nextChar)
 {
     string mask;
@@ -97,7 +6,6 @@ string getWordMask(char nextChar)
     cin >> mask;
     return mask;
 }
-
 /***
     Args:
         ch (char): The predicted character by the AI
@@ -108,8 +16,16 @@ string getWordMask(char nextChar)
 
 bool isCorrectChar(char ch, const string& mask)
 {
-    bool answer;
+    bool answer = false;
     //Write your code here
+    for (char c : mask)
+    {
+        if (ch == c)
+        {
+            answer = true;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -123,8 +39,16 @@ bool isCorrectChar(char ch, const string& mask)
 ***/
 bool isWholeWord(const string& mask)
 {
-     bool answer;
+    bool answer = true;
     //Write your code here
+    for (char c : mask)
+    {
+        if (c == '_')
+        {
+            answer = false;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -138,12 +62,19 @@ bool isWholeWord(const string& mask)
         answer (bool) : return False if the provided mask and the given word is not in the same form.
         Example: - False: mask(-ood), char 'd' vs word(boot)
                  - True: mask(-ood), char 'd'  vs word(good)
-
 ***/
 bool wordConformToMask(const string& word, const string& mask, char ch) 
 {
-    bool answer;
+    bool answer = true;
     //Write your code here
+    for (int i=0; i<mask.length(); i++)
+    {
+        if (mask[i] != '_' && mask[i] != word[i])
+        {
+            answer = false;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -163,5 +94,12 @@ vector<string> filterWordsByMask(const vector<string>& words, const string& mask
 {
     vector<string> answer;
     //Write your code here
+    for (string c : words)
+    {
+        if (wordConformToMask(c,mask,ch)) 
+        {
+            answer.push_back(c);
+        }
+    }
     return answer;
 }
