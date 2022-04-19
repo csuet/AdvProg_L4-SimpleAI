@@ -135,8 +135,6 @@ string getWordMask(char nextChar)
 bool isCorrectChar(char ch, const string& mask)
 {
     bool answer;
-    //Write your code here
-    return answer;
     answer = false;
     for (int i = 0; i < mask.length(); i++) {
         if (ch == mask[i]) return true;
@@ -155,8 +153,6 @@ bool isCorrectChar(char ch, const string& mask)
 bool isWholeWord(const string& mask)
 {
     bool answer;
-    //Write your code here
-    return answer;
     for (int i = 0; i < mask.length(); i++) {
         if (mask[i] == '-') return false;
     }
