@@ -1,10 +1,4 @@
-//#include "simpleai.h"
-#include <set>
-#include <map>
-#include <vector>
-#include <string>
-#include <iostream>
-using namespace std;
+#include "simpleai.h"
 int readMaxGuess()
 {
     int maxGuess;
