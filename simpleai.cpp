@@ -1,4 +1,5 @@
 #include "simpleai.h"
+
 int readMaxGuess()
 {
     int maxGuess;
