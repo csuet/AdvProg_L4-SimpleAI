@@ -28,6 +28,10 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 {
     vector<string> answer;
     //Write your code here
+    for (string s : vocabulary)
+    {
+        if (s.size() == wordLen) answer.push_back(s);
+    }
     return answer;
 }
 
@@ -42,6 +46,15 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 {
     char answer;
     //Write your code here
+    for (char c = 'a'; c <= 'z'; c = static_cast<char>(c + 1))
+    {
+        if (selectedChars.find(c) == selectedChars.end())
+        {
+            answer = c;
+            break;
+        }
+    }
+
     return answer;
 }
 
@@ -49,19 +62,27 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
     Args:
         candidateWords (vector<string>): The candidate words for the current given string 
     Returns:
-        answer (map) : The map which count the occurences of character in the set of candidate words
+        answer (map) : The map which count the occurrences of character in the set of candidate words
 ***/
 
 map<char, int> countOccurrences(const vector<string>& candidateWords)
 {
     map<char, int> answer;
     //Write your code here
+    
+    for (string word : candidateWords)
+    {
+        for (char c : word)
+        {
+            answer[c]++;
+        }
+    }
     return answer;
 }
 
 /***
     Args:
-        occurrences (map<char, int>): The map which count the occurences of character in the set of candidate words
+        occurrences (map<char, int>): The map which count the occurrences of character in the set of candidate words
         selectedChars (set<char>): The predicted characters
     Returns:
         answer (char) : The most frequent character
@@ -71,6 +92,15 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 {
     char answer;
     //Write your code here
+    int maxOccurrence = 0;
+    for (auto x : occurrences)
+    {
+        if (x.second > maxOccurrence && selectedChars.find(x.first) == selectedChars.end())
+        {
+            maxOccurrence = x.second;
+            answer = x.first;
+        }
+    }
     return answer;
 }
 
@@ -86,6 +116,9 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
 {
     char answer;
     //Write your code here
+    map<char, int> m = countOccurrences(candidateWords);
+    answer = findMostFrequentChar(m, selectedChars);
+
     return answer;
 }
 
@@ -110,6 +143,15 @@ bool isCorrectChar(char ch, const string& mask)
 {
     bool answer;
     //Write your code here
+    for (char c : mask)
+    {
+        if (ch == c)
+        {
+            answer = true;
+            return answer;
+        }
+    }
+    answer = false;
     return answer;
 }
 
@@ -125,6 +167,15 @@ bool isWholeWord(const string& mask)
 {
      bool answer;
     //Write your code here
+    answer = true;
+    for (char c : mask)
+    {
+        if (c == MASK_CHAR)
+        {
+            answer = false;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -144,6 +195,20 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
 {
     bool answer;
     //Write your code here
+    answer = true;
+    if (!isCharInWord(ch, mask)) answer = false;
+    else
+    {
+        for (int i = 0; i < mask.length(); i++)
+        {
+            if (mask[i] != MASK_CHAR && mask[i] != word[i])
+            {
+                answer = false;
+                break;
+            }
+        }
+    }
+
     return answer;
 }
 
@@ -153,7 +218,7 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
         words (vector<string>): The candidate words
         ch (char): The predicted character by the AI
     Returns:
-        answer (bool) : a list of word which satisfiy the mask and the predicted character
+        answer (bool) : a list of word which satisfy the mask and the predicted character
         Examples: input words: (good,boot,hood,...)
                   input mask: -ood
                   predicted char: d
@@ -163,5 +228,9 @@ vector<string> filterWordsByMask(const vector<string>& words, const string& mask
 {
     vector<string> answer;
     //Write your code here
+    for (string w : words)
+    {
+        if (wordConformToMask(w, mask, ch)) answer.push_back(w);
+    }
     return answer;
 }
