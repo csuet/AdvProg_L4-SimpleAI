@@ -138,7 +138,6 @@ bool isCorrectChar(char ch, const string& mask)
         if (mask[i] == ch)
         {
             answer = true;
-            break;
         }
     }
     return answer;
@@ -189,7 +188,6 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
         if (word[i] == ch && mask[i] == ch)
         {
             answer = true;
-            break;
         }
     }
     return answer;
