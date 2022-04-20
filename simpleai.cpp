@@ -149,7 +149,7 @@ bool isWholeWord(const string& mask)
 {
      bool answer = true;
     //Write your code here
-    for(char c : nask){
+    for(char c : mask){
         if(c == '-') answer = false;
     }
     return answer;
