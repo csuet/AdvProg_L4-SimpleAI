@@ -88,11 +88,12 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 {
     char answer;
     //Write your code here
-    int maxFrequent = -1;
-    for(auto i : occurrences){
-    	if(i.second > maxFrequent && selectedChars.count(i.first) == 0){
-    		answer = i.first;
-    		maxFrequent = i.second;
+    int maxFrequent = 0;
+    for( char character = 'a'; character <='z'; character++){
+    	if(selectedChars.count(character) != 0) continue;
+    	if(occurrences.count(character) && occurrences.at(character) > maxFrequent){
+    		maxFrequent = occurrences.at(character);
+    		answer = character;
 		}
 	}
     return answer;
@@ -110,9 +111,8 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
 {
     char answer;
     //Write your code here
-    map<char, int> occurrences;
-    occurrences = countOccurrences(candidateWords);
-    answer = findMostFrequentChar(occurrences, selectedChars);
+     
+    answer = findMostFrequentChar(countOccurrences(candidateWords), selectedChars);
     return answer;
 }
 
@@ -159,7 +159,7 @@ bool isWholeWord(const string& mask)
      bool answer = true;
     //Write your code here
     for(int i=0;i<mask.length();i++){
-    	if(mask[i] == '_'){
+    	if(mask[i] == '-'){
     		answer = false;
     		break;
 		}
