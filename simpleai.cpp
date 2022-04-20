@@ -169,11 +169,10 @@ bool isWholeWord(const string& mask)
 ***/
 bool wordConformToMask(const string& word, const string& mask, char ch)
 {
-    bool answer;
+    bool answer = true;
     //Write your code here
     for (int i = 0; i < mask.length(); i++)
         if (mask[i] == ch && word[i] != ch) answer = false;
-    answer = true;
     return answer;
 }
 
