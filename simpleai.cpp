@@ -45,6 +45,11 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 {
     char answer;
     //Write your code here
+    for(int i = 'a'; i <= 'z'; i++){
+        if(selectedChars.count(i) == 0){
+            answer = i;
+        }
+    }
     return answer;
 }
 
@@ -59,6 +64,11 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 {
     map<char, int> answer;
     //Write your code here
+    for(unsigned i = 0; i < candidateWords.size(); i++){
+        for(unsigned j = 0; j < candidateWords[i].size(); j++){
+            answer[candidateWords[i][j]]++;
+        }
+    }
     return answer;
 }
 
@@ -74,6 +84,13 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 {
     char answer;
     //Write your code here
+    int best = -1;
+    for(auto i : occurrences){
+        if(i.second > best && selectedChars.count(i.first) == 0){
+            answer = i.first;
+            best = i.second;
+        }
+    }
     return answer;
 }
 
@@ -89,6 +106,8 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
 {
     char answer;
     //Write your code here
+    map<char, int> frequent = countOccurrences(candidateWords);
+    answer = findMostFrequentChar(frequent, selectedChars);
     return answer;
 }
 
