@@ -154,14 +154,13 @@ bool isWholeWord(const string& mask)
 {
      bool answer;
     //Write your code here
-    int count = 0;
-    for(int i = 0; i < mask.length(); i++)
-    {
+    int dem = 0;
+    for(int i = 0; i < mask.size(); i++){
         if(mask[i] == '-'){
-            count ++;
+            dem ++;
         }
     }
-    if(count != 0){
+    if(dem > 0){
         answer = false;
     }
     return answer;
