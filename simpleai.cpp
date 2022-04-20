@@ -80,12 +80,12 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 ***/
 
 //tìm kí tự xuất hiện nhiều nhất và khác các kí tự đã chọn
-char findBestChar(const map<char, int>& occurrences, const set<char>& selectedChars)
+char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& selectedChars)
 {
     char answer;
     int k = 0;
     for (auto x: occurrences) {
-        if ((x.second > k) && (selectedChars.find(x.first) != selectedChars.end())) {
+        if ((x.second > k) && (selectedChars.find(x.first) == selectedChars.end())) {
             k = x.second;
             answer = x.first;
         }
@@ -102,13 +102,13 @@ char findBestChar(const map<char, int>& occurrences, const set<char>& selectedCh
 ***/
 
 //chọn kí tự đó làm answer
-/**char findBestChar(const vector<string>& candidateWords, const set<char>& selectedChars)
+char findBestChar(const vector<string>& candidateWords, const set<char>& selectedChars)
 {
     char answer;
     answer = findMostFrequentChar(countOccurrences(candidateWords), selectedChars);
     return answer;
 }
-**/
+
 
 //lấy xâu mặt nạ sau lượt đoán của máy
 string getWordMask(char nextChar)
