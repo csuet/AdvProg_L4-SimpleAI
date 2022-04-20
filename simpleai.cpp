@@ -134,10 +134,13 @@ string getWordMask(char nextChar)
 
 bool isCorrectChar(char ch, const string& mask)
 {
-    bool answer;
+    bool answer = false;
     //Write your code here
-    if(mask.find(ch)==string::npos){
-        answer = false;
+    for(int i=0;i<mask.length();i++)
+    {
+        if(mask[i] == ch){
+            return true;
+        }
     }
     return answer;
 }
