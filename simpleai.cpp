@@ -30,7 +30,7 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
     //Write your code here
     
     for(int i=0;i<vocabulary.size();i++){
-    	if(vocabulary[i].length() == wordlen){
+    	if(vocabulary[i].length() == wordLen){
     		answer.push_back(vocabulary[i]);
 		}
 	}
@@ -90,7 +90,7 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
     //Write your code here
     int maxFrequent = -1;
     for(auto i : occurrences){
-    	if(i.second > maxFrequent && selectedChar.count(i.first) == 0){
+    	if(i.second > maxFrequent && selectedChars.count(i.first) == 0){
     		answer = i.first;
     		maxFrequent = i.second;
 		}
