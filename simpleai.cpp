@@ -152,7 +152,7 @@ bool isCorrectChar(char ch, const string& mask)
 ***/
 bool isWholeWord(const string& mask)
 {
-     bool answer;
+     bool answer = true;
     //Write your code here
     int dem = 0;
     for(int i = 0; i < mask.size(); i++){
