@@ -141,7 +141,7 @@ bool isCorrectChar(char ch, const string& mask)
 {
     bool answer = false;
     for (int i = 0; i < mask.size(); ++ i) {
-        if (mask[i] != '-') {
+        if (mask[i] == ch) {
             answer = true;
             break;
         }
