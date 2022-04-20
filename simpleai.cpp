@@ -190,17 +190,19 @@ bool isWholeWord(const string& mask)
 ***/
 bool wordConformToMask(const string& word, const string& mask, char ch) 
 {
-    bool answer;
     //Write your code here
-    if ( mask[ch - 'a'] == '1' )
+    bool answer = false;
+    int wordCount = 0;
+    int maskCount = 0;
+    for (int i = 0; i < word.length(); i++)
     {
+        if (ch == word[i])
+            wordCount++;
+        if (ch == mask[i])
+            maskCount++;
+    }
+    if (wordCount != 0 && maskCount != 0)
         answer = true;
-    }
-    else
-    {
-        answer = false;
-    }
-
     return answer;
 }
 
