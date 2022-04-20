@@ -106,9 +106,9 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
     char answer;
     //Write your code here
     map<char,int> thongKe;
-    for (int i=0;i<candidateWords.size() and selectedChars.count(candidateWords[i][j])==1;i++){
-        for (int j=0;j<candidateWords[i].size();j++){
-            thongKe[candidateWords[i][j]]++;
+    for (int i=0;i<candidateWords.size() ;i++){
+        for (int j=0;j<candidateWords[i].size() ;j++){
+            if (selectedChars.count(candidateWords[i][j])==0) thongKe[candidateWords[i][j]]++;
         }
     }
 
