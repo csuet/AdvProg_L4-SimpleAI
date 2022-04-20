@@ -151,7 +151,7 @@ bool isCorrectChar(char ch, const string& mask)
 bool isWholeWord(const string& mask)
 {
     //Write your code here
-    for(const auto &i:mask) {
+    for(const auto i:mask) {
         if(i=='_') {
             return false;
         }
