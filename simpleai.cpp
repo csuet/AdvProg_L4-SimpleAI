@@ -154,13 +154,7 @@ bool isWholeWord(const string& mask)
 {
      bool answer;
     //Write your code here
-    int countAlphabet = 0;
-    for(int i =0 ;i<mask.length();i++){
-        if(mask[i] >= 'a'&& mask[i]<= 'z'){
-            countAlphabet++;
-        }
-    }
-    if(countAlphabet != mask.length() ){
+    if(mask.find('-')!=string::npos){
         answer = false;
     }
     return answer;
