@@ -154,7 +154,14 @@ bool isWholeWord(const string& mask)
 {
      bool answer;
     //Write your code here
-    if(mask.find('-')!=string::npos){
+    int count = 0;
+    for(int i = 0; i < mask.length(); i++)
+    {
+        if(mask[i] == '-'){
+            count ++;
+        }
+    }
+    if(count != 0){
         answer = false;
     }
     return answer;
