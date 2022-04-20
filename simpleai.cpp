@@ -83,23 +83,17 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 
 char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& selectedChars)
 {
-       char answer;
-    int m = -1;
-    for(auto c: occurrences){
-        if (c.second > answer && selectedChars.find(c.first) == selectedChars.end())
-            m = c.second;
-            answer = c.first;
-
-    int max = 0;
-    for (char character = 'a' ; character <= 'z'; character++)
+      char answer;
+    //Write your code here
+    int maxOccurrence = 0;
+    for (auto x : occurrences)
     {
-        if (selectedChars.count(character) != 0) continue;
-        if (occurrences.count(character) && occurrences.at(character) > max) {
-            max = occurrences.at(character);
-            answer = character;
+        if (x.second > maxOccurrence && selectedChars.find(x.first) == selectedChars.end())
+        {
+            maxOccurrence = x.second;
+            answer = x.first;
         }
     }
-
     return answer;
 }
 
@@ -141,10 +135,17 @@ string getWordMask(char nextChar)
 
 bool isCorrectChar(char ch, const string& mask)
 {  
-    bool answer;
-    answer = true;
+  bool answer;
     //Write your code here
-    if (mask.find(ch) == string::npos) answer = false;
+    for (char c : mask)
+    {
+        if (ch == c)
+        {
+            answer = true;
+            return answer;
+        }
+    }
+    answer = false;
     return answer;
 }
 
@@ -158,10 +159,17 @@ bool isCorrectChar(char ch, const string& mask)
 ***/
 bool isWholeWord(const string& mask)
 {
-     bool answer;
-     answer = true;
+    bool answer;
     //Write your code here
-    if (mask.find('_') != string::npos) answer = false;
+    answer = true;
+    for (char c : mask)
+    {
+        if (c == MASK_CHAR)
+        {
+            answer = false;
+            break;
+        }
+    }
     return answer;
 }
 
@@ -180,14 +188,21 @@ bool isWholeWord(const string& mask)
 bool wordConformToMask(const string& word, const string& mask, char ch) 
 {
    bool answer;
-    answer = true;
     //Write your code here
-    for (int i = 0; i < word.size(); i++) {
-        if (isalpha(mask[i]) and mask[i] != word[i]) {
-            answer = false;
-            break;
+    answer = true;
+    if (!isCharInWord(ch, mask)) answer = false;
+    else
+    {
+        for (int i = 0; i < mask.length(); i++)
+        {
+            if (mask[i] != MASK_CHAR && mask[i] != word[i])
+            {
+                answer = false;
+                break;
+            }
         }
     }
+
     return answer;
 }
 
