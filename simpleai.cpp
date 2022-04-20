@@ -157,9 +157,10 @@ bool isWholeWord(const string& mask)
      bool answer = true;
     //Write your code here
     for (int i = 0; i < mask.length();i++){
-    	if (mask[i] == '-')
-    	answer = false;
-    	break;
+    	if (mask[i] == '-'){
+    		answer = false;
+    		break;
+		}
 	}
     return answer;
 }
