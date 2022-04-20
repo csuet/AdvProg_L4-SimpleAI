@@ -193,7 +193,6 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
         for (int i = 0; i < word.size(); ++ i) {
             if (word[i] != '-' && mask[i] != word[i]) {
                 answer = false;
-                break;
             }
         }
     }
