@@ -106,7 +106,7 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 
     for(auto &ch: occurrences)
     {
-        if(ch.first > frequent)
+        if(ch.second > frequent && (selectedChars.find(ch.first) == selectedChars.end()))
         {
             frequent = ch.second;
             answer = ch.first;
@@ -206,11 +206,20 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
     answer = true;
     int sz = mask.size();
     
-    for(int i = 0; i < sz; ++i)
+    if(!isCharInWord(ch, mask)) answer = false;
+    else 
     {
-        if(mask[i] == ch && word[i] != ch) answer = false;
+        for(int i = 0; i < sz; ++i)
+        {
+            if(mask[i] != '-' && word[i] != mask[i]) 
+            {
+                answer = false;
+                break;
+            }
+        }
+        return answer;
     }
-    return answer;
+    
 }
 
 /***
