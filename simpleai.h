@@ -6,7 +6,7 @@
 #include <map>
 #include <set>
 #include <fstream>
- 
+#include <climits>
 #include "util.h"
 
 using namespace std;
