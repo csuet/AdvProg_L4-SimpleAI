@@ -187,6 +187,7 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
     return answer;
 }
 
+
 /***
     Args:
         mask (string): The response mask by the player
