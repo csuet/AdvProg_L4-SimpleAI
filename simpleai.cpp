@@ -71,9 +71,9 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 {
     map<char, int> answer;
     //Write your code here
-    for (int i = 0; i < candidateWords.size(); i++)
+    for (unsigned i = 0; i < candidateWords.size(); i++)
     {
-        for (int j = 0; j < candidateWords[i].size(); j++)
+        for (unsigned j = 0; j < candidateWords[i].size(); j++)
         {
             answer[candidateWords[i][j]]++;
         }
@@ -123,14 +123,6 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
     return answer;
 }
 
-string getWordMask(char nextChar)
-{
-    string mask;
-    cout << "The next char is: " << nextChar << endl;
-    cout << "Please give me your answer: ";
-    cin >> mask;
-    return mask;
-}
 
 /***
     Args:
@@ -167,9 +159,9 @@ bool isWholeWord(const string& mask)
 {
      bool answer=true;
     //Write your code here
-    for (const auto &i : mask)
+    for (char c : mask)
     {
-        if (i == '_')
+        if (c == MASK_CHAR)
         {
             answer = false;
             break;
@@ -202,10 +194,9 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
     {
         for (int i = 0; i < word.length(); i++)
         {
-            if (mask[i] != '-' && mask[i] != word[i])
+            if (word[i] != '-' && mask[i] != word[i])
             {
                 answer = false;
-                break;
             }
         }
     }
