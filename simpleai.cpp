@@ -148,11 +148,10 @@ bool isCorrectChar(char ch, const string& mask)
 ***/
 bool isWholeWord(const string& mask)
 {
-     bool answer;
+    bool answer = true;
     //Write your code here
     for (int i = 0; i < mask.length(); i++)
         if (mask[i] == '-') answer = false;
-    answer = true;
     return answer;
 }
 
