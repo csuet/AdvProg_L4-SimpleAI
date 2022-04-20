@@ -85,22 +85,13 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& selectedChars)
 {
     char answer;
+    int m = -1;
+    for(auto c: occurrences){
+        if (c.second > answer && selectedChars.find(c.first) == selectedChars.end())
+            m = c.second;
+            answer = c.first;
 
-    multimap<int, char> MM;
-    for (auto &i : occurrences)
-    {
-        MM.insert({i.second, i.first});
     }
-
-    for (auto &i : occurrences)
-    {
-        if (i.second == MM.rbegin()->first && selectedChars.count(i.first) == 0)
-        {
-            answer = i.first;
-            break;
-        }
-    }
-
     return answer;
 }
 
@@ -168,7 +159,7 @@ bool isWholeWord(const string& mask)
     // Write your code here
     for (const auto &i : mask)
     {
-        if (i == '_')
+        if (i == '-')
         {
             answer = false;
             break;
