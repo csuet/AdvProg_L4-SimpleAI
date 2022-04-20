@@ -17,6 +17,8 @@ int readWordLen()
     
 }
 
+const char DASH = '-';
+
 /***
     Args:
         wordLen (int): The desired length of input word
@@ -154,7 +156,7 @@ bool isWholeWord(const string& mask)
     bool answer = true;
     for (char character : mask)
     {
-        if (character == '_')
+        if (character == DASH)
             answer = false;
     }
     return answer;
@@ -184,7 +186,7 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
         }
         else
         {
-            if (mask[i] == '_' && mask[i] != word[i])
+            if (mask[i] == DASH && mask[i] != word[i])
                 answer = false;
         }
     }
