@@ -49,13 +49,13 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 {
     char answer;
     //Write your code here
-    if ( selectedChars.size() == 0 )
+    for (int i = 'a'; i <= 'z'; i++)
     {
-        answer = 'a';
-    }
-    else
-    {
-        answer = selectedChars.begin();
+        if (selectedChars.find(i) == selectedChars.end())
+        {
+            answer = i;
+            break;
+        }
     }
     return answer;
 }
