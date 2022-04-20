@@ -96,7 +96,7 @@ bool isWholeWord(const string& mask)
 {
     bool answer = true;
     for(auto i : mask){
-        if(i == '_'){
+        if(i == '-'){
             answer = false;
             break;
         }
