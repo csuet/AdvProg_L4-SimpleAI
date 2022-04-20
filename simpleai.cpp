@@ -193,7 +193,6 @@ bool isWholeWord(const string& mask)
 ***/
 bool wordConformToMask(const string& word, const string& mask, char ch) 
 {
-    bool answer;
     //Write your code here
     bool answer = false;
     int wordCount = 0;
