@@ -170,13 +170,16 @@ bool isWholeWord(const string& mask)
 {
      bool answer;
     //Write your code here
-    if ( mask.length() == readWordLen() )
     {
-        answer = true;
-    }
-    else
-    {
-        answer = false;
+        if ( mask[i] != '_' )
+        {
+            answer = true;
+        }
+        else
+        {
+            answer = false;
+            break;
+        }
     }
 
     return answer;
