@@ -135,7 +135,7 @@ string getWordMask(char nextChar)
 bool isCorrectChar(char ch, const string& mask)
 {  
     bool answer;
-    bool answer = true;
+    answer = true;
     //Write your code here
     if (mask.find(ch) == string::npos) answer = false;
     return answer;
@@ -152,7 +152,7 @@ bool isCorrectChar(char ch, const string& mask)
 bool isWholeWord(const string& mask)
 {
      bool answer;
-    bool answer = true;
+     answer = true;
     //Write your code here
     if (mask.find('_') != string::npos) answer = false;
     return answer;
@@ -173,7 +173,7 @@ bool isWholeWord(const string& mask)
 bool wordConformToMask(const string& word, const string& mask, char ch) 
 {
    bool answer;
-    bool answer = true;
+    answer = true;
     //Write your code here
     for (int i = 0; i < word.size(); i++) {
         if (isalpha(mask[i]) and mask[i] != word[i]) {
