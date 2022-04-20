@@ -48,7 +48,6 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
     for(char c = 'a'; c <= 'z'; c++) {
         if(selectedChars.find(c) != selectedChars.end()) {
             answer = c;
-            break;
         }
     }
     return answer;
@@ -65,8 +64,10 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 {
     map<char, int> answer;
     //Write your code here
-    for(string s : candidateWords) {
-        for(char c : s) answer[c]++;
+    for(int i = 0; i < candidateWords.size(); i++) {
+        for(int j = 0; j < candidateWords[i].length(); j++) {
+            answer[candidateWords[i][j]]++;
+        }
     }
     return answer;
 }
@@ -131,8 +132,8 @@ bool isCorrectChar(char ch, const string& mask)
 {
     bool answer = false;
     //Write your code here
-    for(char c : mask) {
-        if(c == ch) {
+    for(unsigned int i = 0; i < mask.length(); i++) {
+        if(mask[i] == ch) {
             answer = true;
             break;
         }
@@ -152,7 +153,8 @@ bool isWholeWord(const string& mask)
 {
      bool answer = true;
     //Write your code here
-    for(char c : mask) {
+    for(unsigned int i = 0; i < mask.length(); i++) {
+        char c = mask[i];
         if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) continue;
         else {
             answer = false;
@@ -209,17 +211,8 @@ vector<string> filterWordsByMask(const vector<string>& words, const string& mask
 {
     vector<string> answer;
     //Write your code here
-    for(string s : words) {
-        if(s.length() == mask.length() && s.find(ch) != -1) {
-            bool ok = true;
-            for(int i = 0; i < s.length(); i++) {
-                if(mask[i] != '-' && mask[i] != s[i]) {
-                    ok = false;
-                    break;
-                }
-            }
-            if(ok) answer.push_back(s);
-        }
+    for(unsigned int i = 0; i < words.size(); i++) {
+        if(wordConformToMask(words[i], mask, ch)) answer.push_back(words[i]);
     }
     return answer;
 }
