@@ -139,7 +139,7 @@ bool isCorrectChar(char ch, const string& mask)
 {
     bool answer = false;
     //Write your code here
-    for (int i : mask) {
+    for (int i =0;i<mask.length();i++) {
         if (ch == mask[i]) {
             answer = true;
             return answer;
@@ -147,7 +147,7 @@ bool isCorrectChar(char ch, const string& mask)
     }
     return answer;
 }
-
+ 
 /***
     Args:
         mask (string): The response mask by the player
