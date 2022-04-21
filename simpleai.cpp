@@ -111,7 +111,7 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 char findBestChar(const vector<string>& candidateWords, const set<char>& selectedChars)
 {
     char answer;
-    map<char, int>& myOccurences = countOccurrences(candidateWords);
+    map<char, int> myOccurences = countOccurrences(candidateWords);
     answer = findMostFrequentChar(myOccurences, selectedChars);
 
     //Write your code here
@@ -186,7 +186,7 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
     bool answer;
     //Write your code here
     for (int i = 0; i < mask.length();i++) {
-        if ((mask[i] == '-' || mask[i] == '_' || mask[i] == word[i]) && word.find(ch) != word.end()) {
+        if ((mask[i] == '-' || mask[i] == '_' || mask[i] == word[i]) && isCharInWord(ch,word)) {
             answer = true;
         } else {
             answer = false;
