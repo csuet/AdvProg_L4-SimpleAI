@@ -87,7 +87,7 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
     //Write your code here
     int max = 0;
     for (auto p: occurrences) {
-        if (p.second > max) {
+        if (p.second > max && selectedChars.find(p.first) == selectedChars.end()) {
             max = p.second;
             answer = p.first;
         }
@@ -105,19 +105,10 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 
 char findBestChar(const vector<string>& candidateWords, const set<char>& selectedChars)
 {
-    char answer = '0';
     //Write your code here
-    string word;
-    for (int i = 0; i < candidateWords.size(); i++) {
-        word = candidateWords[i];
-        for (char c : word) {
-            if (selectedChars.find(c) == selectedChars.end())
-                answer = c;
-                break;
-        }
-        if (answer != '0') break;
-    }
-    return answer;
+    map<char, int> count = countOccurrences(candidateWords);
+    char c = findMostFrequentChar(count, selectedChars);
+    return c;
 }
 
 string getWordMask(char nextChar)
