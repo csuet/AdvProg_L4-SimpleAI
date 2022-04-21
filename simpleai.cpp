@@ -123,7 +123,14 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
     return answer;
 }
 
-
+string getWordMask(char nextChar)
+{
+    string mask;
+    cout << "The next char is: " << nextChar << endl;
+    cout << "Please give me your answer: ";
+    cin >> mask;
+    return mask;
+}
 /***
     Args:
         ch (char): The predicted character by the AI
