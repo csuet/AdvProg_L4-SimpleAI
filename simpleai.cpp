@@ -154,10 +154,10 @@ bool isCorrectChar(char ch, const string& mask)
 ***/
 bool isWholeWord(const string& mask)
 {
-     bool answer = false;
+     bool answer = true;
     //Write your code here
     if (mask.find('_') == string::npos) {
-        answer = true;
+        answer = false;
     }
     return answer;
 }
