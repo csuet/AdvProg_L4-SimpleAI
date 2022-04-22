@@ -186,12 +186,16 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
 {
     bool answer = true;
     //Write your code here
-    for (int i = 0; i < mask.length(); i++)
+    if (!isCharInWord(ch, word)) return answer = false;
+    else
     {
-        if (mask[i] != '-' && word[i] != mask[i])
+        for (int i = 0; i < mask.length(); i++)
         {
-            answer = false;
-            break;
+            if (mask[i] != '-' && word[i] != mask[i])
+            {
+                answer = false;
+                break;
+            }
         }
     }
     return answer;
