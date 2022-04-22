@@ -113,3 +113,80 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
 
 string getWordMask(char nextChar)
 {
+    string mask;
+    cout << "The next char is: " << nextChar << endl;
+    cout << "Please give me your answer: ";
+    cin >> mask;
+    return mask;
+}
+
+/***
+    Args:
+        ch (char): The predicted character by the AI
+        mask (string): The response mask by the player
+    Returns:
+        answer (bool) : return False if the predicted character is the wrong one, True otherwise
+***/
+
+bool isCorrectChar(char ch, const string& mask)
+{
+    bool answer=0;
+    for(char c : mask){
+        if(ch==c){
+            answer=1;
+            break;
+        }
+    }
+    //Write your code here
+    return answer;
+}
+
+/***
+    Args:
+        mask (string): The response mask by the player
+    Returns:
+        answer (bool) : return False if the provided mask is not a whole word, True otherwise
+        (Example: -False: g__d
+                  -True:  good)
+***/
+bool isWholeWord(const string& mask){
+    bool answer=1;
+    for(char c:mask){
+        if(c=='-'){
+            answer=0;
+            break;
+        }
+    }
+    //Write your code here
+    return answer;
+}
+
+/***
+    This function should be used to support the filterWordsByMask function below
+    Args:
+        mask (string): The response mask by the player
+        word (string): input word
+        ch (char): The predicted character by the AI
+    Returns:
+        answer (bool) : return False if the provided mask and the given word is not in the same form.
+        Example: - False: mask(-ood), char 'd' vs word(boot)
+                 - True: mask(-ood), char 'd'  vs word(good)
+
+***/
+bool wordConformToMask(const string& word, const string& mask, char ch)
+{
+    bool answer;
+    //Write your code here
+    for(int i=0; i<word.size(); i++)
+        if(mask[i]!='-' && mask[i]!=word[i])
+            return 0;
+    return 1;
+}
+
+/***
+    Args:
+        mask (string): The response mask by the player
+        words (vector<string>): The candidate words
+        ch (char): The predicted character by the AI
+    Returns:
+        answer (bool) : a list of wor
