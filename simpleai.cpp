@@ -52,6 +52,7 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
             break;
         }
     }
+    return answer;
 }
 
 /***
