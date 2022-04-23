@@ -208,3 +208,4 @@ vector<string> filterWordsByMask(const vector<string>& words, const string& mask
     }
     return answer;
 }
+// simpleai.cppp
