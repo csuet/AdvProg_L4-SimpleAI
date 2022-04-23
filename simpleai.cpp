@@ -236,11 +236,11 @@ vector<string> filterWordsByMask(const vector<string> &words, const string &mask
 {
     vector<string> answer;
     // Write your code here
-    for (int i = 0; i < word.size(); i++)
+    for (int i = 0; i < words.size(); i++)
     {
-        if (wordConformToMask(word[i], mask, ch))
+        if (wordConformToMask(words[i], mask, ch))
         {
-            answer.push_back(word[i]);
+            answer.push_back(words[i]);
         }
     }
     return answer;
