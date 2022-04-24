@@ -34,6 +34,7 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
             answer.push_back(vocabulary[i]);
         }
     }
+    return answer;
 }
 /***
     Args:
@@ -130,7 +131,7 @@ bool isCorrectChar(char ch, const string& mask)
 {
     //Write your code here
     if (mask.find(ch) != string::npos) {
-        answer = true;
+        return true;
     return false;
 }
 
