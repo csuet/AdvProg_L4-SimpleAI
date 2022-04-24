@@ -132,6 +132,7 @@ bool isCorrectChar(char ch, const string& mask)
     //Write your code here
     if (mask.find(ch) != string::npos) {
         return true;
+    }
     return false;
 }
 
@@ -172,7 +173,7 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
         return false;
     }
     for (int i = 0; i < word.size(); ++i) {
-        if (mask[i] != '_' && mask[i] != word[i]) {
+        if (mask[i] != '_' && mask[i] != '-' && mask[i] != word[i]) {
             return false;
         }
     }
