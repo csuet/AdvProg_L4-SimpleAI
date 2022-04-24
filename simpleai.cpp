@@ -29,7 +29,8 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
     vector<string> answer;
     //Write your code here
     for ( int i=0;i<vocabulary.size();i++ ) 
-        if ( vocabulary[i].length() == wordLen ) answer.push_back(vocabulary[i]);
+        if ( vocabulary[i].length() == wordLen ) 
+            answer.push_back(vocabulary[i]);
     return answer;
 }
 
@@ -42,9 +43,16 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 
 char nextCharWhenWordIsNotinDictionary(const set<char>& selectedChars)
 {
-    char answer;
-    
-    
+    char answer='a';
+    while (answer != 'z')
+    {
+        if (selectedChars.find(answer) == selectedChars.end())
+        {
+            return answer;
+        } 
+        answer++;
+    }
+    answer = ' ';
     return answer;
 }
 
@@ -78,10 +86,20 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 {
     char answer;
     //Write your code here
-    for (char c='a';c<'z';c++) 
-        if (selectedChars.find(c)!=selectedChars.end())
-            if (occurrences.at(c+1)>=occurrences.at(c)) answer=c+1;
-    return answer;
+    int temp = 0;
+    for (map<char, int>::const_iterator ptr = occurrences.begin(); ptr != occurrences.end(); ptr++)
+    {
+        if (selectedChars.find(ptr->first) == selectedChars.end())
+        {
+            if (temp < ptr->second)
+            {
+                temp = ptr->second;
+                answer = ptr->first;
+            }
+
+        }
+
+    }
 }
 
 /***
@@ -96,14 +114,9 @@ char findBestChar(const vector<string>& candidateWords, const set<char>& selecte
 {
     char answer;
     //Write your code here
-    map<char, int> occurrences;
-    for (char c='a';c<='z';c++) occurrences.at(c)=0;
-    for (char x: selectedChars) {
-        for (int i=0;i<candidateWords.size();i++)
-            for (int j=0;j<candidateWords[i].length())
-                if (candidateWords[i][j]==x) occurrences[x]+=1;
-    }
-    answer = findMostFrequentChar( occurrences,  selectedChars);
+    map<char, int> frequency_table;
+    frequency_table = countOccurrences(candidateWords);
+    answer = findMostFrequentChar(frequency_table, selectedChars);
     return answer;
 }
 
