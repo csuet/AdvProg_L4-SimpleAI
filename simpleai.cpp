@@ -114,8 +114,8 @@ char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& se
 char findBestChar(const vector<string>& candidateWords, const set<char>& selectedChars)
 {
     char answer;
-    map < char , int > frequency = countOccurrences (candidateWords);
-    answer = findMostFrequentChar (frequency,selectedChars);
+    map < char , int > count_occurences  = countOccurrences (candidateWords);
+    answer = findMostFrequentChar (count_occurences,selectedChars);
     //Write your code here
     return answer;
 }
