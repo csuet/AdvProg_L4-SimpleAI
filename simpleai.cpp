@@ -78,8 +78,8 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
 
 char findMostFrequentChar(const map<char, int>& occurrences, const set<char>& selectedChars)
 {
-   /* char answer;
-    long a[26];
+   char answer;
+   /* long a[26];
     int i=0;
     //for(int i=0;i<26;i++)a[i]= occurrences['a'+i];
     for(auto j : occurrences){a[i]=j.second;
