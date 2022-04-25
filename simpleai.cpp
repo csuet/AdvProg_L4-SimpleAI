@@ -166,14 +166,13 @@ bool isCorrectChar(char ch, const string& mask)
 ***/
 bool isWholeWord(const string& mask)
 {
-     bool answer;
+     bool answer = true;
     //Write your code here
-     bool answer = 1;
      for (char c : mask) 
      {
          if (c == '-') 
          {
-             answer = 0;
+             answer = false;
              break;
          }
      }
