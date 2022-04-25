@@ -185,7 +185,6 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
     bool answer=false;
     
     //Write your code here
-     bool answer = isCharInWord(ch, word);
     for(int i = 0; i < (int) word.size(); i++)
     {
         if(mask[i] == '_')
