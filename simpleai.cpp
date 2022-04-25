@@ -28,6 +28,10 @@ vector<string> filterWordsByLen(int wordLen, const vector<string>& vocabulary)
 {
     vector<string> answer;
     //Write your code here
+    for (int i=0; i< vocabulary.size(); i++)
+        {
+            if (vocabulary[i].size()== wordLen) answer.push_back(vocabulary[i]);
+        }
     return answer;
 }
 
@@ -42,6 +46,10 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
 {
     char answer;
     //Write your code here
+    for (answer = 'a'; answer != 'z'; answer ++)
+        {
+            if (selectedChars.find(answer) == selectedChars.end())
+        }
     return answer;
 }
 
@@ -108,7 +116,11 @@ string getWordMask(char nextChar)
 
 bool isCorrectChar(char ch, const string& mask)
 {
-    bool answer;
+    bool answer=false;
+    for (int i=0; i < mask.length() ; i++)
+        {
+            if (ch==mask[i]) answer=true;
+        }
     //Write your code here
     return answer;
 }
@@ -123,7 +135,11 @@ bool isCorrectChar(char ch, const string& mask)
 ***/
 bool isWholeWord(const string& mask)
 {
-     bool answer;
+     bool answer=true;
+     for (int i = 0 ; i < mask.length(); i ++)
+        {
+            if (!(mask[i] < 'Z' && mask[i] > 'A' && mask[i] > 'a' && mask[i] < 'z' )) answer=false;
+        }
     //Write your code here
     return answer;
 }
@@ -142,7 +158,8 @@ bool isWholeWord(const string& mask)
 ***/
 bool wordConformToMask(const string& word, const string& mask, char ch) 
 {
-    bool answer;
+    bool answer=false;
+    
     //Write your code here
     return answer;
 }
