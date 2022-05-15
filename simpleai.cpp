@@ -50,8 +50,10 @@ char nextCharWhenWordIsNotInDictionary(const set<char>& selectedChars)
     char answer;
     //Write your code here
     for (char ch = 'a'; ch <= 'z'; ch++) {
-        if (selectedChars.find(ch) == selectedChars.end())
+        if (selectedChars.find(ch) == selectedChars.end()) {
             answer = ch;
+            break;
+        }
     }
     return answer;
 }
@@ -155,7 +157,7 @@ bool isWholeWord(const string& mask)
      bool answer = true;
     //Write your code here
     for (int i = 0; i < mask.length(); i++) {
-        if (mask[i] == '-') {
+        if (mask[i] == '_') {
             answer = false;
             break;
         }
@@ -180,7 +182,7 @@ bool wordConformToMask(const string& word, const string& mask, char ch)
     bool answer = true;
     //Write your code here
     for (int i = 0; i < mask.length(); i++) {
-        if (mask[i] != '-' && mask[i] != word[i]) {
+        if (mask[i] != '_' && mask[i] != word[i]) {
             answer = false;
             break;
         }
