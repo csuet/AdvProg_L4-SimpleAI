@@ -77,7 +77,6 @@ map<char, int> countOccurrences(const vector<string>& candidateWords)
         for(auto x: c)
             answer[x]++;
     }
-}
     //Write your code here
     return answer;
 }
